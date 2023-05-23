@@ -11,6 +11,7 @@ if [ -f "$(dirname "$0")/vimrc" ]; then
 
     mkdir -p "$HOME/.vim"
 	cp -r ./autoload $HOME/.vim/
+	cp -r ./colors $HOME/.vim/
     
 	mkdir -p "$HOME/.vim/plugged"
 
