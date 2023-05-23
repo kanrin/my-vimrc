@@ -9,3 +9,4 @@
 - `vim ~/.vimrc`
     - install plugins `:PlugInstall`
     - install lsp server `:InstallLspServer`
+- if use apline linux with ash, before install, you should run `sh apline_install.sh`
