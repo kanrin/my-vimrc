@@ -9,8 +9,10 @@ if [ -f "$(dirname "$0")/vimrc" ]; then
 	cp "$(dirname "$0")/vimrc" "$HOME/.vimrc"
     echo "Copied vimrc to $HOME/.vimrc."
 
-    mkdir -p "$HOME/.vim/autoload"
-    mkdir -p "$HOME/.vim/plugged"
+    mkdir -p "$HOME/.vim"
+	cp -r ./autoload $HOME/.vim/
+    
+	mkdir -p "$HOME/.vim/plugged"
 
     echo "Installing Vim-Plug..."
     curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \

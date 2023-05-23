@@ -5,5 +5,7 @@
 
 # Install
 - clone project
-- sh install_vimrc.sh
-
+- `sh install_vimrc.sh`
+- `vim ~/.vimrc`
+    - install plugins `:PlugInstall`
+    - install lsp server `:InstallLspServer`
