@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'isRuslan/vim-es6'
 	Plug 'kchmck/vim-coffee-script'
 	Plug 'jayli/vim-easycomplete'
-	Plug 'bling/vim-airline'
 	Plug 'ervandew/supertab'
 	Plug 'severin-lemaignan/vim-minimap'
 	Plug 'dgryski/vim-godef'
@@ -18,8 +17,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mattn/vim-lsp-settings'
 	Plug 'prabirshrestha/asyncomplete.vim'
 	Plug 'vim-autoformat/vim-autoformat'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 	Plug 'tikhomirov/vim-glsl'
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+	Plug 'vim-erlang/vim-erlang-runtime'
+	Plug 'vim-erlang/vim-erlang-tags'
 call plug#end()
 " 主题
 "colorscheme solarized
