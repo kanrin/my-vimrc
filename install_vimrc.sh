@@ -6,7 +6,7 @@ if [ -f "$(dirname "$0")/vimrc" ]; then
     echo "Found vimrc file."
 
     # copy config file
-	cp "$(dirname "$0")/vimrc" "$HOME/.vimrc"
+    cp "$(dirname "$0")/vimrc" "$HOME/.vimrc"
     echo "Copied vimrc to $HOME/.vimrc."
 
     mkdir -p "$HOME/.vim"

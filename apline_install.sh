@@ -7,3 +7,5 @@ apk add npm
 apk add make
 apk add cmake
 apk add autoconf
+apk add python3
+apk add nodejs
