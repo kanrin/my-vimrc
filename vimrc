@@ -208,6 +208,11 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+
 " powerline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -217,88 +222,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
-
-"-----------------------美化标签栏-----------------------
-"定义颜色
-hi SelectTabLine term=Bold cterm=Bold gui=Bold ctermbg=None
-hi SelectPageNum cterm=None ctermfg=Red ctermbg=None
-hi SelectWindowsNum cterm=None ctermfg=DarkCyan ctermbg=None
-
-hi NormalTabLine cterm=Underline ctermfg=Black ctermbg=LightGray
-hi NormalPageNum cterm=Underline ctermfg=DarkRed ctermbg=LightGray
-hi NormalWindowsNum cterm=Underline ctermfg=DarkMagenta ctermbg=LightGray
-
-function! MyTabLabel(n, select)
-	let label = ''
-	let buflist = tabpagebuflist(a:n)
-	for bufnr in buflist
-		if getbufvar(bufnr, "&modified")
-			let label = '+'
-			break
-		endif
-	endfor
-
-	let winnr = tabpagewinnr(a:n)
-	let name = bufname(buflist[winnr - 1])
-	if name == ''
-		"为没有名字的文档设置个名字
-		if &buftype == 'quickfix'
-			let name = '[Quickfix List]'
-		else
-			let name = '[No Name]'
-		endif
-	else
-		"只取文件名
-		let name = fnamemodify(name, ':t')
-	endif
-
-	let label .= name
-	return label
-endfunction
-
-function! MyTabLine()
-	let s = ''
-	for i in range(tabpagenr('$'))
-		" 选择高亮
-		let hlTab = ''
-		let select = 0
-		if i + 1 == tabpagenr()
-			let hlTab = '%#SelectTabLine#'
-			" 设置标签页号 (用于鼠标点击)
-			let s .= hlTab . "[%#SelectPageNum#%T" . (i + 1) . hlTab
-			let select = 1
-		else
-			let hlTab = '%#NormalTabLine#'
-			" 设置标签页号 (用于鼠标点击)
-			let s .= hlTab . "[%#NormalPageNum#%T" . (i + 1) . hlTab
-		endif
-
-		" MyTabLabel() 提供标签
-		let s .= ' %<%{MyTabLabel(' . (i + 1) . ', ' . select . ')} '
-
-		"追加窗口数量
-		let wincount = tabpagewinnr(i + 1, '$')
-		if wincount > 1
-			if select == 1
-				let s .= "%#SelectWindowsNum#" . wincount
-			else
-				let s .= "%#NormalWindowsNum#" . wincount
-			endif
-		endif
-		let s .= hlTab . "]"
-	endfor
-
-	" 最后一个标签页之后用 TabLineFill 填充并复位标签页号
-	let s .= '%#TabLineFill#%T'
-
-	" 右对齐用于关闭当前标签页的标签
-	if tabpagenr('$') > 1
-		let s .= '%=%#TabLine#%999XX'
-	endif
-
-	return s
-endfunction
-set tabline=%!MyTabLine()
 
 let g:python3_host_prog="/usr/local/bin/python3.11"
 au BufWrite * :Autoformat
